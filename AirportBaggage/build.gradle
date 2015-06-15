@@ -1,0 +1,39 @@
+apply plugin: 'application'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+
+def javaVersion = 1.8
+
+sourceCompatibility = javaVersion
+targetCompatibility = javaVersion
+
+version = '1.0'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart',
+                   'Implementation-Version': version
+    }
+}
+
+mainClassName = "com.bagrouter.BagRouter"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile( 'junit:junit:4.12' )
+}
+
+test {
+    systemProperties 'property': 'value'
+}
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}
